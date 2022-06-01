@@ -7,3 +7,15 @@
 //3 - npm install --save mysql2
 
 
+const express = require("express");
+const app = express();
+
+app.get("/", function(req,res){
+    res.send("pagina inicial")
+})
+
+
+
+app.listen(8081, function(){
+    console.log("conectado!")
+})
