@@ -1,0 +1,24 @@
+<form action="/add" method="POST">
+    <p>Titulo:</p>
+    <input type="text", name="titulo">
+    <p>Conteudo: </p>
+    <textarea name="conteudo"></textarea>
+    <button type="submit">Cadastrar post</button>
+
+</form>
+
+
+
+
+<!--para o backend receber dados, é necessário definir 2 atributos
+O method é a forma como os dados vão ser enviados para o backend. Há o envio por GET e por POST. A diferença é que o método GET envia os dados pela URL.
+O action manda os dados para uma rota especfifica. Vamos enviar os dados para a rota /add
+
+QUANDO SE TARBALLHA COM FORMULARIO COM METODO POST, È NECESSARIO ALTERAR O TIPO DA ROTA. Ao inves de conection.get é conection.post
+
+
+FAZENDO ISSO, O FORMULARIO VAI ENVIAR DADOS COM O METODO POST E ATINGIR
+Temos muitas rotas: detele, get, post, put, paptch...
+
+NÃO É POSSIVEL ACESSAR ROTAS DO TIPO POST NA URL
+-->
