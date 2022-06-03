@@ -12,12 +12,6 @@ const conection = express();
 conection.use(bodyParser.urlencoded({extend:false}))
 conection.use(bodyParser.json())
 
-//configurando sequelize
-const sequelize = require("sequelize");
-const db = new sequelize('database_app', 'root', 'pedro170995', {
-    host: 'localhost',
-    dialect: 'mysql'
-} );
 
 //configurando handlebars
 const handlebars = require("express-handlebars");
@@ -40,15 +34,6 @@ conection.post('/add', function(req,res){ //post pois estamos utilizando o metod
 
 
 })
-
-
-
-//callback do banco de dados
-db.authenticate().then(function(){
-    console.log("banco conectado com sucesso!");
-}).catch(function(erro){
-    console.log("banco não conectado, devido ao erro: " + erro);
-});
 
 //callback do servidor
 conection.listen(8081,function(){
