@@ -3,7 +3,9 @@
 
 <!--o handlebars possui uma estrutura para receber diversos objetos - um array de posts - de uma vez, como é o caso 
 de posts, que será enviado handlebars-->
-
+<form action="/cad" method="POST">
+    <button>adicionar posts</button>
+</form>
 {{#each posts}}
 <!--nessa parte insertir o que se deseja visualizar do banco de dados-->
     <h1>{{titulo}}</h1> 
