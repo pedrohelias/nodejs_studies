@@ -9,7 +9,7 @@ mongoose.connect("mongodb://localhost/banco_mongo", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 
-}).then(()=>{
+}).then(()=>{ 
     console.log("Conectado com sucesso!")
 }).catch((error)=>{
     console.log("erro ao se conectar: " + error)
