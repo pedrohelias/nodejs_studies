@@ -6,3 +6,5 @@
 - Express
 - Node.js
 - MySQL.
+- MongoDB/with mongoose
+- Bootstrap
