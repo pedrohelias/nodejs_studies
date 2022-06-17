@@ -27,7 +27,7 @@ router.get('/categorias/add', (req, res) => {
     res.render('./admin/addcategorias')
 })
 
-router.post('/categorias/nova', (req, res) => {
+router.post('/categorias/nova', (req, res) => { //aqui vai trabalhar com a captura de dados para o banco
     const novaCategoria = { //vai receber os dados do formulario
         nome: req.body.nome, //esses campos fazem referencia ao nome no html
         slug: req.body.slug,
