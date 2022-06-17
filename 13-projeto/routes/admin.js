@@ -1,6 +1,9 @@
 //vai guardar todas as rotas do admin
 const express = require("express")
 const router = express.Router() //trazendo a componentização do express em forma de rotas
+const mongoose = require("mongoose")
+require('../models/Categoria')
+const Categoria = mongoose.model('categorias') //assim que se utiliza o model de forma externa no mongoose. Chama o arquivo do modelo e passa uma categoria
 
 //definindo as rotas
 
@@ -15,8 +18,27 @@ router.get('/posts', (req, res) => {
 })
 
 //rota que vai conter categaorias
-router.get('/categorias', (req, res) => {
-    res.send('Pagina de categorias - rota ADM')
+router.get('/categorias', (req, res) => { //esse é o endereço a ser digitado na url
+    res.render('./admin/categorias') //esse é o arquivo no codigo a ser renderizado
+})
+
+//rota que vai dar direto no formulario
+router.get('/categorias/add', (req, res) => {
+    res.render('./admin/addcategorias')
+})
+
+router.post('/categorias/nova', (req, res) => {
+    const novaCategoria = { //vai receber os dados do formulario
+        nome: req.body.nome, //esses campos fazem referencia ao nome no html
+        slug: req.body.slug,
+    }
+
+    new Categoria(novaCategoria).save().then(() => {
+        //se fez o insert com sucesso
+        console.log('insert adicionado')
+    }).catch((error) => {
+        console.log('insert não adicionado devido ao erro: ' + error)
+    })
 })
 
 router.get('/testeboots', (req, res) => {

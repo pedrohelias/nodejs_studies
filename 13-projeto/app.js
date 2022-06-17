@@ -25,6 +25,11 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars'); //configurando o handblars
 
 //Mongoose
+mongoose.connect('mongodb://localhost/blogapp').then(() => {
+    console.log('conectado ao banco!')
+}).catch((error) => {
+    console.log('problemas com a conexão com o banco:' + error)
+})
 
 //Public - arquivos estáticos
 app.use(express.static(path.join(__dirname + '/public')))//vai trazer um caminho absoluto pra pasta public
