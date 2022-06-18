@@ -2,6 +2,7 @@
 const express = require("express")
 const router = express.Router() //trazendo a componentização do express em forma de rotas
 const mongoose = require("mongoose")
+//para invocar o model de categoria, se realiza o require e depois adicionar o model a uma variavel
 require('../models/Categoria')
 const Categoria = mongoose.model('categorias') //assim que se utiliza o model de forma externa no mongoose. Chama o arquivo do modelo e passa uma categoria
 

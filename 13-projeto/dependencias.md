@@ -11,3 +11,9 @@
 ## a pasta public vai guardar todos os arquivos estáticos. É necessário atualizar o arquivo main.handlebars para utilizar o bootstrap
 
 ## colocar uma nav em todas as partes da aplicaçaõ. Dividir o template em partes. O handlebars lida com isso utilizando o "partials". Atualizar novamente o arquivo main.handlebars
+
+## middleware -> Para o cliente se comunicar com o host, é necessário utlizar o protocolo HTTP. O middleware é uma pequena aplicação que vai ficar intermediando a comunicação entre cliente e servidor. Então cada requesição e resposta que aconteer, toda comunicação, o middleware vai observar. Com ele é possível "manipular" requisições e respostas antes das mesmas chegarem ao destino. 
+
+## para configurar sessão, é necessário instalar o modulo de sessions. Para tal, fazemos npm install --save express-session. Também precisar instalar o modulo connect-flash. Para tal, fazemos: npm install --save connect-flash
+
+## tudo que tem app.use() é um middleware
