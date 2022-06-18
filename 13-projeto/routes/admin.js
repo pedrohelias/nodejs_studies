@@ -29,17 +29,43 @@ router.get('/categorias/add', (req, res) => {
 })
 
 router.post('/categorias/nova', (req, res) => { //aqui vai trabalhar com a captura de dados para o banco
-    const novaCategoria = { //vai receber os dados do formulario
-        nome: req.body.nome, //esses campos fazem referencia ao nome no html
-        slug: req.body.slug,
+
+    //faremos o sistema de validação aqui:
+    let erros = []
+    if (!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) { //se o campo nome for vazio, ou o tipo no campo nome for indefinido ou o nome for nulo, ele irá registrar uma mensagem de erros.
+        erros.push({
+            texto: "nome invalido"
+        }) //isso vai fazer com que passemos dados para o array
+
     }
 
-    new Categoria(novaCategoria).save().then(() => {
-        //se fez o insert com sucesso
-        console.log('insert adicionado')
-    }).catch((error) => {
-        console.log('insert não adicionado devido ao erro: ' + error)
-    })
+    if (!req.body.slug || typeof req.body.slug == undefined || req.body.slug == null) { //se o campo nome for vazio, ou o tipo no campo nome for indefinido ou o nome for nulo, ele irá registrar uma mensagem de erros.
+        erros.push({
+            texto: "slug invalido"
+        }) //isso vai fazer com que passemos dados para o array
+
+    }
+
+    if (erros.length > 0) { //se existir mais de 1 erro
+        res.render("./admin/addcategorias", {
+            erros: erros
+        }) //passando dados atraves do render
+    } else {
+        const novaCategoria = { //vai receber os dados do formulario
+            nome: req.body.nome, //esses campos fazem referencia ao nome no html
+            slug: req.body.slug,
+        }
+
+        new Categoria(novaCategoria).save().then(() => {
+            //se fez o insert com sucesso
+            res.redirect('./') //se der certo ele irá redirecionar para categorias
+        }).catch((error) => {
+            console.log('insert não adicionado devido ao erro: ' + error)
+        })
+
+    }
+
+
 })
 
 router.get('/testeboots', (req, res) => {

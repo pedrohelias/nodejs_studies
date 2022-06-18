@@ -16,7 +16,9 @@ const app = express()
 
 //inicializando sessões
 const session = require('express-session')
-const flash = require('connect-flash')
+var flash = require('connect-flash')
+
+
 
 //configuração dos modulos
 //session
@@ -25,15 +27,18 @@ app.use(session({
     resave: true, //força o salvamento da sessão no registro de sessões
     saveUninitialized: true //força o salvamento de uma sessão não inicializada no registro de ssessões
 }))
+
 app.use(flash()) // o flash precisa ser configurado abaixo da sessão
 
 //configurar o middleware para trabalharmos com sessão. Sabemos que ele recebe requisição, resposta e next
+//ATENCAO
+/*
 app.use((res, req, next) => {
     res.locals.success_msg = req.flash('success_msg')//assim se cria variaveis globais. E dessa forma conseguir atingir t oda a aplicação
     res.locals.error_msg = req.flash('error_msg')
     next()
 })
-
+*/
 
 //Bodyparser
 app.use(bodyParser.urlencoded({ extended: true }))
